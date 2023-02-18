@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 
-index_router = APIRouter()
+dormitories_router = APIRouter()
 
 
-@index_router.get("/")
+@dormitories_router.get("/")
 async def index():
     return {"status": "OK"}
