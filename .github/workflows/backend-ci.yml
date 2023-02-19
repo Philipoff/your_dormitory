@@ -34,7 +34,7 @@ jobs:
       # Step 5
       - name: Activate and Install Depencies into Virtual env
         run: python -m venv venv && source venv/bin/activate &&
-          pip3 install -r requirements.txt
+          pip3 install -r ./backend/requirements.txt
         if: steps.cache-venv.outputs.cache-hit != 'true'
       # Step 6
       - name: Activate venv and Run Test
