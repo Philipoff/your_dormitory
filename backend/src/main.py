@@ -1,5 +1,5 @@
 from starlette.middleware.cors import CORSMiddleware
-from backend.src.services.service import APIService
+from .services.service import APIService
 
 import uvicorn
 api = APIService()
