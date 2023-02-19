@@ -48,7 +48,7 @@ jobs:
 
       # Step 8
       - name: Add App to Zip file
-        run: cd ./your_dormitory && zip -g ../api.zip -r .
+        run: cd ./backend && zip -g ../api.zip -r .
 
       # Step 9
       - name: Upload zip file artifact
