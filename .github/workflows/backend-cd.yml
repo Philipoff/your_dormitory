@@ -26,9 +26,9 @@ jobs:
           push: true
           tags: mindlessdoc/yd-backend:latest
 
-#      - name: Invoke deployment Portainer hook
-#        uses: distributhor/workflow-webhook@v2
-#        env:
-#          webhook_url: ${{ secrets.WEBHOOK_URL }}
-#          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-#          data: '{ "deploy": "true" }'
+      - name: Invoke deployment Portainer hook
+        uses: distributhor/workflow-webhook@v2
+        env:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+          data: '{ "deploy": "true" }'
