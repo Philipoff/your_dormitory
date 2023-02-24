@@ -128,3 +128,16 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .idea
+
+admin_frontend/**/.DS_Store
+admin_frontend/**/node_modules
+admin_frontend/**/build
+admin_frontend/**/.svelte-kit
+admin_frontend/**/package
+admin_frontend/**/.env
+admin_frontend/**/.env.*
+admin_frontend/**/!.env.example
+admin_frontend/**/.vercel
+admin_frontend/**/.output
+admin_frontend/**/vite.config.js.timestamp-*
+admin_frontend/**/vite.config.ts.timestamp-*
