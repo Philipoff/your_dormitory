@@ -8,6 +8,9 @@ const config = {
     preprocess: vitePreprocess(),
 
     kit: {
+        paths: {
+          base: '/admin'
+        },
         adapter: adapter({
             fallback: 'index.html',
         }),
