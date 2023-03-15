@@ -13,3 +13,8 @@ services:
     ports:
       - "3001:3000"
 
+  admin:
+    container_name: "admin"
+    image: siailyadev/yd-admin:latest
+    ports:
+      - "3002:80"
