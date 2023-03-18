@@ -24,7 +24,7 @@ jobs:
         with:
           context: ./admin/
           push: true
-          tags: siailyadev/yd-admin:latest
+          tags: siailyadev/yd-admin:0.0.1
 
       - name: Invoke deployment Portainer hook
         uses: distributhor/workflow-webhook@v2
