@@ -1,5 +1,5 @@
 <script>
-    import LoginFeature from "$lib/features/login/LoginFeature.svelte";
+    import {LoginFeature} from "$lib/features/auth/index";
 </script>
 
 <div class="card">

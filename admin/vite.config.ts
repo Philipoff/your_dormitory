@@ -5,6 +5,7 @@ import * as path from "path";
 export default defineConfig({
 	plugins: [sveltekit()],
 	test: {
+		environment: 'jsdom',
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	},
 	resolve: {
