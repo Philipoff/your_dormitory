@@ -1,12 +1,10 @@
 <script>
-	import './styles.css';
+	import 'reflect-metadata'
+	import '$lib/app/index.css';
 </script>
 
 <div class="app">
 	<main>
-		<slot />
+		<slot/>
 	</main>
 </div>
-
-<style>
-</style>

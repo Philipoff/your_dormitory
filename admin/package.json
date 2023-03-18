@@ -1,5 +1,6 @@
 {
-	"name": "admin-frontend",
+	"name": "your-dormitory-admin",
+	"license": "MIT",
 	"version": "0.0.1",
 	"scripts": {
 		"admin:dev": "vite dev",
@@ -33,7 +34,10 @@
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0",
-		"vitest": "^0.25.3"
+		"vitest": "^0.29.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"reflect-metadata": "^0.1.13"
+	}
 }

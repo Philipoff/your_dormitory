@@ -1,0 +1,3 @@
+.card {
+    @apply rounded-lg drop-shadow-lg p-3 bg-white;
+}
