@@ -1,3 +1,5 @@
+@import "@shared/ui/styles/blocks.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

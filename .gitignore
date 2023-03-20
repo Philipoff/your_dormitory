@@ -141,3 +141,6 @@ admin/**/.vercel
 admin/**/.output
 admin/**/vite.config.js.timestamp-*
 admin/**/vite.config.ts.timestamp-*
+
+!admin/src/lib
+!admin/.env.example
