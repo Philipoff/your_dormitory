@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+}
+body {
+    background-color: #FFF;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    color: #212121;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+a:hover >.svg-shadow{
+    -webkit-filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, .7));
+    filter: drop-shadow( 1px 1px 2px rgba(0, 0, 0, .7));
+}
+button {
+    border: none;
+    outline: none;
+    background: inherit;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+header {
+    flex: 0 0 auto;         /* flex-grow, flex-shrink, flex-basis */
+}
+.main {
+    flex: 1 0 auto;         /* flex-grow, flex-shrink, flex-basis */
+}
+footer {
+    flex: 0 0 auto;         /* flex-grow, flex-shrink, flex-basis */
+}
+
+.content {
+    margin: 0 auto;
+    max-width: 1580px;
+}
+
+.gradient-text {
+    background-color: #212121;
+    background-image: linear-gradient(90deg, #FFC062 0%, #FF746B 47.57%);
+    -webkit-background-clip: text;      /* оставляет градиент только под текстом */
+    -webkit-text-fill-color: transparent;   /* делает цвет текста прозрачным */
+}
+
+/* Для динамичного подчеркивания*/
+.un {
+    display: inline-block;
+}
+
+.un::after {
+    content: '';
+    width: 0;
+    height: 1px;
+    display: block;
+    background: #212121C0;  /* базовый цвет, меняется в самих компонентах*/
+    transition: 300ms ease-in;
+}
+
+.un:hover::after {
+    width: 100%;
+}
