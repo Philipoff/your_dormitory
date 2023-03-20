@@ -18,3 +18,22 @@ services:
     image: siailyadev/yd-admin:0.0.1
     ports:
       - "3002:80"
+
+  postgres:
+    container_name: your_dormitory_db
+    image: postgres:14.5
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d your_dormitory" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    environment:
+      POSTGRES_DB: "your_dormitory"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "1488"
+      PGDATA: /var/lib/postgresql/data/some_name/
+    volumes:
+      - ../2. Init Database:/docker-entrypoint-initdb.d
+      - .:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
