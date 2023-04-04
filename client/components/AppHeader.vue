@@ -17,6 +17,7 @@
               </svg>
               <div class="menu-item__title" >Избранное</div>
             </a>
+
             <a class="menu-item" @click="">
 
               <svg class="menu-item__svg" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,6 +91,9 @@
   .main-content__header {
     font-size: 96px;
     font-weight: 500;
+  }
+  a.menu-item:hover {
+    color: inherit;
   }
 
   a:hover > .menu-item__svg, a:hover > .options-theme{
