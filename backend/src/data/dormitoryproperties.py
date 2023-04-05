@@ -20,4 +20,3 @@ class DormitoryProperties(SQLModel, table=True):
     foundation_year: Optional[datetime] = Field(default=None)
     dormitory_type: str = Field(foreign_key="dormitory_type.name")
     content: List["DormitoryContent"] = Relationship(back_populates="dormitory_properties")
-

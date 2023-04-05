@@ -4,6 +4,8 @@ from sqlmodel import SQLModel, Field, Relationship
 
 from commondormitoryrate import CommonDormitoryRate
 from dormitoryproperties import DormitoryProperties
+
+
 # from review import Review
 
 
