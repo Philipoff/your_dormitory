@@ -13,4 +13,3 @@ class CommonDormitoryRate(SQLModel, table=True):
     )
     total: float
     count: int = 0
-    

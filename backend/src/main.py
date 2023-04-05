@@ -2,6 +2,7 @@ from starlette.middleware.cors import CORSMiddleware
 from .services.service import APIService
 
 import uvicorn
+
 api = APIService()
 
 api.app.add_middleware(
@@ -11,7 +12,6 @@ api.app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 
 @api.app.get("/")

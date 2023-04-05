@@ -2,6 +2,7 @@ from typing import Optional
 
 from sqlmodel import SQLModel, Field, Relationship
 
+
 class DormitoryRate(SQLModel, table=True):
     __tablename__ = "dormitory_rate"
 
