@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 // defineProps({
 //   isAuthorized: {
 //     type: Boolean,
@@ -29,9 +29,9 @@
             <div class="tab-pane fade" id="pills-sign-up" role="tabpanel" aria-labelledby="pills-sign-up-tab">
               <div class="tab__inner">
                 <div class="tab-form">
-                  <input class="form-input" type="text" id="sign-up-name" placeholder="Иванов Иван">
-                  <input class="form-input" type="text" id="sign-up-login" placeholder="Email">
-                  <input class="form-input" type="password" id="sign-up-password" placeholder="Пароль">
+                  <input class="form-input" type="text" id="sign-up-name" placeholder="Иванов Иван" v-model="formSignUp.fio">
+                  <input class="form-input" type="text" id="sign-up-login" placeholder="Email" v-model="formSignUp.email">
+                  <input class="form-input" type="password" id="sign-up-password" placeholder="Пароль" v-model="formSignUp.password">
                 </div>
                 <button class="tab-btn sign-up" @click="signUp">Зарегистрироваться</button>
               </div>
@@ -40,8 +40,8 @@
             <div class="tab-pane fade show active" id="pills-sign-in" role="tabpanel" aria-labelledby="pills-sign-in-tab">
               <div class="tab__inner">
                 <div class="tab-form">
-                  <input class="form-input" type="text" id="sign-in-login" placeholder="Email">
-                  <input class="form-input" type="password" id="sign-in-password" placeholder="Пароль">
+                  <input class="form-input" type="text" id="sign-in-login" placeholder="Email" v-model="formSignIn.email">
+                  <input class="form-input" type="password" id="sign-in-password" placeholder="Пароль" v-model="formSignIn.password">
                 </div>
                 <button class="tab-btn sign-in" @click="signIn">Войти</button>
               </div>
@@ -53,23 +53,59 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
   name: "AuthModal",
   data(){
     return {
-
+      formSignUp: {
+        fio: '',
+        email: '',
+        password: ''
+      },
+      formSignIn: {
+        email: '',
+        password: ''
+      }
     }
   },
   methods: {
     async signUp(){
-      //fetch или axios
+      let data = {fio: this.formSignUp.fio, email: this.formSignUp.email, password: this.formSignUp.password }
+      console.log('data: ', data)
+
+      const config = useRuntimeConfig();
+      try{
+        const res = await useFetch(config.public.baseURL+'/api/auth/sign_up')
+        if(res.ok){
+          this.cleanFormSignIn()
+          console.log('Регистрация пользователя прошла успешно.')
+        }
+      } catch (error) {
+        console.log(error)
+      }
     },
     async signIn(){
-      console.log('hello')
+      let data = {email: this.formSignIn.email, password: this.formSignIn.password }
+      console.log('data: ', data)
+
       const config = useRuntimeConfig();
-      const posts = await useFetch(config.public.baseURL+'/test')
-      console.log(posts)
+      try{
+        const res = await useFetch(config.public.baseURL+'/api/auth/sign_in')
+        if(res.ok){
+          this.cleanFormSignIn()
+          let obj = res.json()
+          localStorage.setItem('access_token', `Bearer ${obj['access_token']}`)
+          localStorage.setItem('refresh_token', obj['refresh_token'])
+          console.log('Авторизация пользователя прошла успешно.')
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    cleanFormSignIn(){
+      this.formSignIn.email = ''
+      this.formSignIn.password = ''
     }
   }
 }
