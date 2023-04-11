@@ -6,11 +6,11 @@
         <div class="main-content__header" id="header">
           Поможем найти <span class="gradient-text">идеальное</span> общежитие
         </div>
-        <SearchForm></SearchForm>
+        <SearchForm @loadedDormitories="updateCatalog"></SearchForm>
         <div class="main-content__blocks">
 
           <div class="main-content-block-item">
-            <Catalog></Catalog>
+            <Catalog :dormitories="dormitories"></Catalog>
           </div>
           <div class="main-content-block-item">
             <LastReviews></LastReviews>
@@ -20,11 +20,21 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+<script>
   export default {
     mounted() {
-      const h: HTMLElement | null = document.getElementById('header')
+      const h = document.getElementById('header')
       h?.classList.add('smoothAppearance')
+    },
+    data(){
+      return {
+        dormitories: []
+      }
+    },
+    methods: {
+      updateCatalog(res){
+        this.dormitories = res
+      }
     }
   }
 </script>

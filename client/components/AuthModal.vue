@@ -54,6 +54,8 @@
 </template>
 
 <script>
+import {useFetch, useRuntimeConfig} from "nuxt/app";
+
 export default {
   name: "AuthModal",
   data(){
@@ -72,40 +74,75 @@ export default {
   methods: {
     async signUp(){
       let data = {fio: this.formSignUp.fio, email: this.formSignUp.email, password: this.formSignUp.password }
-      console.log('data: ', data)
+      console.log('dataSignUp: ', data)
 
       const config = useRuntimeConfig();
+      //let url = config.public.baseURL + '/api/auth/sign_up'
+      let url = "https://run.mocky.io/v3/ffb1d08c-9ffc-455e-966d-9255f5d6f19c" // статус 200
+      //let url = "https://run.mocky.io/v3/0b05314b-5dbd-4e32-be63-9469a6ebcfbf" // статус 401
       try{
-        const res = await useFetch(config.public.baseURL+'/api/auth/sign_up')
-        if(res.ok){
-          this.cleanFormSignIn()
-          console.log('Регистрация пользователя прошла успешно.')
-        }
-      } catch (error) {
-        console.log(error)
+        const res = await $fetch(url, {
+          method: 'POST',
+          body: data,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        this.cleanFormSignIn()
+        console.log('Регистрация пользователя прошла успешно.')
+        alert('Регистрация пользователя прошла успешно.')
+        this.closeAuthModal()
+
+      } catch(error){
+          alert('При регистрации что-то пошло не так... \nStatus-code: ' + error.status)
+          console.log(error.message)
       }
     },
+
     async signIn(){
       let data = {email: this.formSignIn.email, password: this.formSignIn.password }
-      console.log('data: ', data)
+      console.log('dataSignIn: ', data)
 
       const config = useRuntimeConfig();
+      //let url = config.public.baseURL + '/api/auth/sign_in'
+      let url = "https://run.mocky.io/v3/9ab21fd6-c962-487b-8dd0-28d0aef8ee93"
       try{
-        const res = await useFetch(config.public.baseURL+'/api/auth/sign_in')
-        if(res.ok){
+        const res = await $fetch(url, {
+          method: 'POST',
+          body: data,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        // res = {access_token: "", refresh_token: ""}
+        if(res){
           this.cleanFormSignIn()
-          let obj = res.json()
-          localStorage.setItem('access_token', `Bearer ${obj['access_token']}`)
-          localStorage.setItem('refresh_token', obj['refresh_token'])
+          localStorage.setItem('access_token', `Bearer ${res['access_token']}`)
+          localStorage.setItem('refresh_token', res['refresh_token'])
           console.log('Авторизация пользователя прошла успешно.')
+          alert('Авторизация пользователя прошла успешно.')
+          this.$emit('authorized')
+          this.closeAuthModal()
+        } else {
+          console.log('Пустой список токенов.')
         }
-      } catch (error) {
-        console.log(error)
+      } catch(error){
+        if(error.status === 401){
+          alert('Неверный логин или пароль')
+        } else {
+          alert('При авторизации что-то пошло не так... \nStatus-code: ' + error.status)
+          console.log(error.message)
+        }
       }
     },
     cleanFormSignIn(){
       this.formSignIn.email = ''
       this.formSignIn.password = ''
+    },
+    closeAuthModal(){
+      let myModalEl = document.getElementById('exampleModal')
+      let myModal = bootstrap.Modal.getInstance(myModalEl)
+      myModal.hide();
     }
   }
 }

@@ -20,14 +20,27 @@
 
             <!-- Button trigger AuthModal -->
 
-            <button type="button" class="menu-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="menu-item" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                    v-if="!isAuthorized">
               <svg class="menu-item__svg" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.2915 7.42908V6.69535C7.2915 4.54946 7.2915 3.47651 7.9811 2.87842C8.6707 2.28034 9.73286 2.43208 11.8572 2.73555L16.7234 3.43072C19.1795 3.7816 20.4076 3.95704 21.1412 4.80293C21.8748 5.64882 21.8748 6.88935 21.8748 9.37042V15.6295C21.8748 18.1106 21.8748 19.3511 21.1412 20.197C20.4076 21.0429 19.1795 21.2184 16.7234 21.5692L11.8572 22.2644C9.73286 22.5679 8.6707 22.7196 7.9811 22.1215C7.2915 21.5235 7.2915 20.4505 7.2915 18.3046V17.777" stroke="#212121" stroke-width="2"/>
                 <path d="M16.6665 12.5L17.4474 11.8753L17.9471 12.5L17.4474 13.1247L16.6665 12.5ZM4.1665 13.5C3.61422 13.5 3.1665 13.0523 3.1665 12.5C3.1665 11.9477 3.61422 11.5 4.1665 11.5V13.5ZM13.2807 6.66699L17.4474 11.8753L15.8856 13.1247L11.719 7.91638L13.2807 6.66699ZM17.4474 13.1247L13.2807 18.333L11.719 17.0837L15.8856 11.8753L17.4474 13.1247ZM16.6665 13.5H4.1665V11.5H16.6665V13.5Z" fill="#212121"/>
               </svg>
               <div class="menu-item__title">Войти</div>
             </button>
-            <AuthModal></AuthModal>
+
+            <button type="button" class="menu-item"
+                    @click="unauthorized"
+                    v-if="isAuthorized">
+              <svg class="menu-item__svg" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.2915 7.42908V6.69535C7.2915 4.54946 7.2915 3.47651 7.9811 2.87842C8.6707 2.28034 9.73286 2.43208 11.8572 2.73555L16.7234 3.43072C19.1795 3.7816 20.4076 3.95704 21.1412 4.80293C21.8748 5.64882 21.8748 6.88935 21.8748 9.37042V15.6295C21.8748 18.1106 21.8748 19.3511 21.1412 20.197C20.4076 21.0429 19.1795 21.2184 16.7234 21.5692L11.8572 22.2644C9.73286 22.5679 8.6707 22.7196 7.9811 22.1215C7.2915 21.5235 7.2915 20.4505 7.2915 18.3046V17.777" stroke="#212121" stroke-width="2"/>
+                <path d="M16.6665 12.5L17.4474 11.8753L17.9471 12.5L17.4474 13.1247L16.6665 12.5ZM4.1665 13.5C3.61422 13.5 3.1665 13.0523 3.1665 12.5C3.1665 11.9477 3.61422 11.5 4.1665 11.5V13.5ZM13.2807 6.66699L17.4474 11.8753L15.8856 13.1247L11.719 7.91638L13.2807 6.66699ZM17.4474 13.1247L13.2807 18.333L11.719 17.0837L15.8856 11.8753L17.4474 13.1247ZM16.6665 13.5H4.1665V11.5H16.6665V13.5Z" fill="#212121"/>
+              </svg>
+              <div class="menu-item__title">Выйти</div>
+            </button>
+
+            <AuthModal @authorized="authorized"></AuthModal>
           </div>
 
           <div class="nav__options">
@@ -56,11 +69,29 @@
     </div>
   </header>
 </template>
-<script lang="ts">
+<script>
 import AuthModal from "~/components/AuthModal.vue";
 
 export default {
-  components: {AuthModal}
+  components: {AuthModal},
+  data(){
+    return {
+      isAuthorized: false
+    }
+  },
+  methods: {
+    authorized() {
+      this.isAuthorized = true
+    },
+    unauthorized(){
+      let ans = confirm('Вы уверены, что хотите выйти из профиля?')
+      if(ans){
+        this.isAuthorized = false
+        localStorage.setItem('access_token', '')
+        localStorage.setItem('refresh_token', '')
+      }
+    }
+  }
 }
 </script>
 <style scoped>
