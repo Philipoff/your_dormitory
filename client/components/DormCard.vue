@@ -65,8 +65,9 @@
   .dorm-university {
     margin-bottom: 11px;
     font-weight: 500;
+    line-height: 100%;
   }
-  .dorm-title{margin-bottom: 39px;}
+  .dorm-title{margin-bottom: 39px;line-height: 100%;}
   .dorm-subway {margin-bottom: 18px;}
   .dorm-subway  {
     padding-left: 48px;
@@ -95,7 +96,7 @@
   }
   .circle-rate {
     margin-top: 35px;
-    margin-bottom: 57px;
+    margin-bottom: 54px;
     display: flex;
     justify-content: center;
     align-items: center;
