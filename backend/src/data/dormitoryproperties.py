@@ -3,17 +3,15 @@ from typing import Optional, List
 
 from sqlmodel import Field, SQLModel, Relationship
 
-from dormitorycontent import DormitoryContent
+from .dormitorycontent import DormitoryContent
 
 
 class DormitoryProperties(SQLModel, table=True):
     __tablename__ = "dormitory_properties"
 
-    id: Optional[int] = Field(default=None, primary_key=True)
-    dormitory_id: Optional["Dormitory"] = Relationship(
-        sa_relationship_kwargs={'uselist': False},
-        back_populates="dormitory_properties"
-    )
+    id: int = Field(default=None, primary_key=True)
+    dormitory_id: int = Field(foreign_key="dormitory.id")
+    dormitory: Optional["Dormitory"] = Relationship(back_populates="properties")
     floors: Optional[int] = Field(default=None)
     people_in_room: Optional[str] = Field(default=None)
     contacts: Optional[str] = Field(default=None)
