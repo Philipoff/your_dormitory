@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
 
-from ..models.auth import (
+from backend.src.services.auth.models.auth import (
     RestRegister,
 )
 
-from ....data.service import DatabaseService
+from backend.src.data.service import DatabaseService
 
 auth_router = APIRouter()
 
@@ -15,7 +15,7 @@ auth_router = APIRouter()
     responses={400: {}, 401: {}, 403: {}},
 )
 async def register(request: Request, data: RestRegister):
-    database = DatabaseService("postgresql+asyncpg://postgres:password@localhost:5432/your_dormitory")
+    database: DatabaseService = request.app.state.database
     # user = await database.get_user(email=data.email)
     #
     # if user is not None:
