@@ -1,16 +1,18 @@
 from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .dormitories.routes import dormitories_router
-from .auth.routes import auth_router
+from backend.src.services.dormitories.routes import dormitories_router
+from backend.src.services.auth.routes import auth_router
+from backend.src.data.service import DatabaseService
 
 
 class APIService:
-    def __init__(self):
+    def __init__(self, database: DatabaseService):
         self.debug = True
         self.app = FastAPI(
             title="API",
         )
+        self.database = database
 
         #  TODO: remove *
         origins = ["*"]
@@ -21,6 +23,7 @@ class APIService:
             allow_methods=[""],
             allow_headers=[""],
         )
+        self.app.state.database = database
 
         self.attach_routes()
 
