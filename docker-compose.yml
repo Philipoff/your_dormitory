@@ -3,7 +3,7 @@ version: "3.9"
 services:
   backend:
     container_name: "backend"
-    image: mindlessdoc/yd-backend:0.0.1
+    image: philipoff/yd-backend:latest
     ports:
       - "3000:3000"
 
