@@ -45,6 +45,16 @@ class DatabaseService:
 
         return instance
 
+    async def get_user(self, email: EmailStr) -> Optional[User]:
+        query = select(User).where(
+            User.email == email,
+        )
+        result = (await self.session.execute(query)).first()
+        if result:
+            print(result)
+            user = result
+            return user
+
     async def register_user(self, email: EmailStr, login: str, first_name: str,
                             last_name: str, password: str) -> Optional[User]:
         hashed_password = bcrypt.hashpw(password=password.encode("utf-8"), salt=bcrypt.gensalt())

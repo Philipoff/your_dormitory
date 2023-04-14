@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
 
-from backend.src.services.auth.models.auth import (
+from ....services.auth.models.auth import (
     RestRegister,
 )
 
-from backend.src.data.service import DatabaseService
+from ....data.service import DatabaseService
 
 auth_router = APIRouter()
 
@@ -16,14 +16,14 @@ auth_router = APIRouter()
 )
 async def register(request: Request, data: RestRegister):
     database: DatabaseService = request.app.state.database
-    # user = await database.get_user(email=data.email)
-    #
-    # if user is not None:
-    #     raise HTTPException(
-    #         status_code=status.HTTP_400_BAD_REQUEST,
-    #         detail="User already exist",
-    #     )
-    # auth_user, _ = await get_user(request)
+    user = await database.get_user(email=data.email)
+
+    if user is not None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="User already exist",
+        )
+    auth_user = await database.get_user(data.email)
 
     user = await database.register_user(
         email=data.email,
