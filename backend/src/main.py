@@ -1,6 +1,6 @@
 from starlette.middleware.cors import CORSMiddleware
-from backend.src.services.service import APIService
-from backend.src.data.service import DatabaseService
+from .services.service import APIService
+from .data.service import DatabaseService
 
 import uvicorn
 

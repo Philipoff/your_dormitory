@@ -1,9 +1,9 @@
 from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.src.services.dormitories.routes import dormitories_router
-from backend.src.services.auth.routes import auth_router
-from backend.src.data.service import DatabaseService
+from ..services.dormitories.routes import dormitories_router
+from ..services.auth.routes import auth_router
+from ..data.service import DatabaseService
 
 
 class APIService:
