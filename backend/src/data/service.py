@@ -51,8 +51,7 @@ class DatabaseService:
         )
         result = (await self.session.execute(query)).first()
         if result:
-            print(result)
-            user = result
+            user = result[0]
             return user
 
     async def register_user(self, email: EmailStr, login: str, first_name: str,
