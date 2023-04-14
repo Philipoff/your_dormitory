@@ -24,7 +24,7 @@ jobs:
         with:
           context: ./backend/
           push: true
-          tags: philipoff/yd-backend:0.0.1
+          tags: mindlessdoc/yd-backend:0.0.1
 
       - name: Invoke deployment Portainer hook
         uses: distributhor/workflow-webhook@v2
