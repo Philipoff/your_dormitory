@@ -23,7 +23,7 @@ async def register(request: Request, data: RestRegister):
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="User already exist",
         )
-    auth_user = await database.get_user(data.email)
+    # auth_user = await database.get_user(data.email)
 
     user = await database.register_user(
         email=data.email,
