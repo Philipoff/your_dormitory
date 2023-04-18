@@ -29,8 +29,6 @@ async def register(request: Request, data: RestRegister):
 
     user = await database.register_user(
         email=data.email,
-        first_name=data.first_name,
-        last_name=data.last_name,
         login=data.login,
         password=data.password,
     )
