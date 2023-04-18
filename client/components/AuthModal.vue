@@ -73,12 +73,12 @@ export default {
   },
   methods: {
     async signUp(){
-      let data = {fio: this.formSignUp.fio, email: this.formSignUp.email, password: this.formSignUp.password }
+      let data = {email: this.formSignUp.email, login: this.formSignUp.fio, password: this.formSignUp.password }
       console.log('dataSignUp: ', data)
 
       const config = useRuntimeConfig();
-      //let url = config.public.baseURL + '/api/auth/sign_up'
-      let url = "https://run.mocky.io/v3/ffb1d08c-9ffc-455e-966d-9255f5d6f19c" // статус 200
+      let url = config.public.baseURL + '/api/auth/register'
+      //let url = "https://run.mocky.io/v3/ffb1d08c-9ffc-455e-966d-9255f5d6f19c" // статус 200
       //let url = "https://run.mocky.io/v3/0b05314b-5dbd-4e32-be63-9469a6ebcfbf" // статус 401
       try{
         const res = await $fetch(url, {
@@ -104,8 +104,8 @@ export default {
       console.log('dataSignIn: ', data)
 
       const config = useRuntimeConfig();
-      //let url = config.public.baseURL + '/api/auth/sign_in'
-      let url = "https://run.mocky.io/v3/9ab21fd6-c962-487b-8dd0-28d0aef8ee93"
+      let url = config.public.baseURL + '/api/auth/login'
+      //let url = "https://run.mocky.io/v3/9ab21fd6-c962-487b-8dd0-28d0aef8ee93"
       try{
         const res = await $fetch(url, {
           method: 'POST',
