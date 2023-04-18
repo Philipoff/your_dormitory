@@ -18,8 +18,8 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            /*baseURL: 'https://yourstudent.ru'*/
-            baseURL: "http://localhost:3000"
+            baseURL: 'https://yourstudent.ru'
+            /*baseURL: "http://localhost:3000"*/
         }
     }
 })
