@@ -56,7 +56,7 @@ class DatabaseService:
 
     async def register_user(self, email: EmailStr, login: str, password: str) -> Optional[User]:
         hashed_password = bcrypt.hashpw(password=password.encode("utf-8"), salt=bcrypt.gensalt())
-        user = User(email=email, login=login, first_name=None, last_name=None,
+        user = User(email=email, login=login, first_name='', last_name='',
                     hashed_password=hashed_password, reviews=[], favorites=[])
         await self.save(user)
 
