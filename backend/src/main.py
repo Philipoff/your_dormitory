@@ -4,7 +4,8 @@ from .data.service import DatabaseService
 
 import uvicorn
 
-api = APIService(DatabaseService("postgresql+asyncpg://postgres:password@localhost:5432/your_dormitory"))
+# api = APIService(DatabaseService("postgresql+asyncpg://postgres:password@localhost:5432/your_dormitory"))
+api = APIService(DatabaseService("postgresql+asyncpg://admin:1488@85.92.111.229:5432/your_dormitory"))
 
 api.app.add_middleware(
     CORSMiddleware,
