@@ -32,7 +32,12 @@ async def register(request: Request, data: RestRegister):
         login=data.login,
         password=data.password,
     )
-    return user
+
+    auth = Auth()
+    access_token = auth.create_token(user.email)
+    refresh_token = auth.create_refresh_token(user.email)
+
+    return {"access_token": access_token, "refresh_token": refresh_token}
 
 
 @auth_router.post("/login")
