@@ -1,7 +1,6 @@
 <template>
   <div class="main">
     <div class="content">
-      <div class="bg"></div>
       <div class="main-content">
         <div class="main-content__header" id="header">
           Поможем найти <span class="gradient-text">идеальное</span> общежитие
@@ -42,12 +41,6 @@
   .main-content {
     margin-top: 120px;
     margin-bottom: 238px;
-  }
-  .main {
-    background-image: url('../assets/bg/bg_up.svg'), url('../assets/bg/bg_down.svg');
-    background-size:  1753px 1739px, 1353px 1339px;
-    background-repeat: no-repeat, no-repeat;
-    background-position: top -390px left 205px, bottom -595px left 15px;
   }
   .main-content__header{
     font-weight: 500;

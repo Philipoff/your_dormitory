@@ -1,5 +1,5 @@
 <template>
-  <div class="dormCard">
+  <div class="dormCard item-card">
     <img class="dorm-img" src="../assets/img/dorm.png" alt="Dormitory photo">
 
     <div class="dorm-info">
@@ -7,15 +7,11 @@
         <div class="dorm-info-item dorm-university">{{$props.dormitory.university}}</div>
         <div class="dorm-info-item dorm-title">{{$props.dormitory.title}}</div>
         <div class="dorm-address">
-          <svg class="dorm-address__svg" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M29.1665 14.5834V28.6251C29.1665 29.7297 28.2711 30.6251 27.1665 30.6251H7.83317C6.7286 30.6251 5.83317 29.7297 5.83317 28.6251V14.5834M32.0832 17.5001L17.4998 2.91675L2.9165 17.5001" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M13.125 30.625V17.5H21.875V30.625" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M23.3335 8.75V4.375H27.7085V13.125" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <AddressSvg></AddressSvg>
           <div class="dorm-address__title">{{$props.dormitory.address}}</div>
         </div>
         <div class="dorm-info-item dorm-subway">{{$props.dormitory.subway}}</div>
-        <button class="dorm-add-fav-button">
+        <button class="dorm-add-fav-button" @click.stop="onClickFav($event, $props.dormitory.id)">
           <svg class="dorm-add-fav-button__svg" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6.49073 20.2827L16.8155 29.9817C17.1399 30.2865 17.3021 30.4389 17.5002 30.4389C17.6982 30.4389 17.8604 30.2865 18.1848 29.9817L28.5096 20.2827C31.3624 17.6029 31.7088 13.1929 29.3095 10.1004L28.8583 9.51896C25.9881 5.81951 20.2267 6.43994 18.2099 10.6657C17.925 11.2626 17.0753 11.2626 16.7904 10.6657C14.7736 6.43994 9.01226 5.81952 6.142 9.51896L5.69086 10.1004C3.29155 13.1929 3.63797 17.6029 6.49073 20.2827Z" stroke="#212121" stroke-width="2"/>
           </svg>
@@ -32,15 +28,29 @@
 </template>
 
 <script>
+import RateCircleSvg from "./ui/RateCircleSvg";
+import AddressSvg from "./icons/AddressSvg";
 export default{
+  components: {AddressSvg, RateCircleSvg},
   props: {
     dormitory: {
+      id: String,
       title: String,
       university: String,
       address: String,
       subway: String,
       rate: String
     }
+  },
+  methods: {
+    onClickFav(event, dormId){
+      console.log(event, dormId)
+      event.stopPropagation()
+      console.log('on click fav button!')
+    }
+  },
+  mounted(){
+    console.log(this.$props.dormitory)
   }
 }
 </script>
@@ -48,9 +58,6 @@ export default{
 <style scoped>
   .dormCard {
     max-width: 1187px;
-    background: #FFFFFF;
-    border: 1px solid #E0E0E0;
-    border-radius: 5px;
     padding: 40px 53px 40px 40px;
     margin-bottom: 20px;
     display: flex;

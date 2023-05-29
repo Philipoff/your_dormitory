@@ -36,7 +36,8 @@ export default {
 
       const config = useRuntimeConfig();
       //let url1 = config.public.baseURL + '/api/dormitories'
-      let url = "https://run.mocky.io/v3/f5dfc5b8-fdce-49da-9153-226e019f264e"
+      let url = "https://run.mocky.io/v3/8f4d5831-0bbd-4579-a6e0-6eabab22fea0"
+      //let url = "https://run.mocky.io/v3/f5dfc5b8-fdce-49da-9153-226e019f264e"
 
 
       try{
