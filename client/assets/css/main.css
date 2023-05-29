@@ -39,9 +39,18 @@ button {
 header {
     flex: 0 0 auto;         /* flex-grow, flex-shrink, flex-basis */
 }
+.section-header{
+    font-size: 32px;
+    margin-bottom: 30px;
+}
 .main {
     flex: 1 0 auto;         /* flex-grow, flex-shrink, flex-basis */
+    background-image: url('../bg/bg_up.svg'), url('../bg/bg_down.svg');
+    background-size:  1753px 1739px, 1353px 1339px;
+    background-repeat: no-repeat, no-repeat;
+    background-position: top -390px left 205px, bottom -595px left 15px;
 }
+
 footer {
     flex: 0 0 auto;         /* flex-grow, flex-shrink, flex-basis */
 }
@@ -74,4 +83,10 @@ footer {
 
 .un:hover::after {
     width: 100%;
+}
+
+.item-card{
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
 }

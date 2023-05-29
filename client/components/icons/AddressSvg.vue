@@ -1,0 +1,13 @@
+<template>
+  <svg class="dorm-address__svg" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M29.1665 14.5834V28.6251C29.1665 29.7297 28.2711 30.6251 27.1665 30.6251H7.83317C6.7286 30.6251 5.83317 29.7297 5.83317 28.6251V14.5834M32.0832 17.5001L17.4998 2.91675L2.9165 17.5001" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M13.125 30.625V17.5H21.875V30.625" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M23.3335 8.75V4.375H27.7085V13.125" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</template>
+
+<script>
+export default {
+  name: "AddressSvg"
+}
+</script>

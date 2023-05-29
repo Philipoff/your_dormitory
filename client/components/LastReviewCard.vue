@@ -1,5 +1,5 @@
 <template>
-  <div class="lastReview-card">
+  <div class="lastReview-card item-card">
     <div class="card-header-inner">
       <div class="header__titles">
         <div class="card-university">СПбГЭТУ "ЛЭТИ"</div>
@@ -32,8 +32,6 @@
 
 <style scoped>
   .lastReview-card{
-    background: #FFFFFF;
-    border: 1px solid #E0E0E0;
     border-radius: 10px;
     padding: 25px 20px;
     margin-bottom: 20px;
