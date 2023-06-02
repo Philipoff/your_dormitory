@@ -104,8 +104,8 @@ export default {
       console.log('dataSignIn: ', data)
 
       const config = useRuntimeConfig();
-      let url = config.public.baseURL + '/api/auth/login'
-      //let url = "https://run.mocky.io/v3/9ab21fd6-c962-487b-8dd0-28d0aef8ee93"
+      //let url = config.public.baseURL + '/api/auth/login'
+      let url = "https://run.mocky.io/v3/9ab21fd6-c962-487b-8dd0-28d0aef8ee93"
       try{
         const res = await $fetch(url, {
           method: 'POST',
@@ -114,7 +114,7 @@ export default {
             'Content-Type': 'application/json'
           }
         })
-        // res = {access_token: "", refresh_token: ""}
+        // res = {userId: "", access_token: "", refresh_token: ""}
         if(res){
           this.cleanFormSignIn()
           localStorage.setItem('access_token', `Bearer ${res['access_token']}`)

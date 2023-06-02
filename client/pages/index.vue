@@ -9,7 +9,8 @@
         <div class="main-content__blocks">
 
           <div class="main-content-block-item">
-            <Catalog :dormitories="dormitories"></Catalog>
+            <Catalog :dormitories="dormitories" id="#catalogContent"></Catalog>
+            <div id="#catalogPreloader"></div>
           </div>
           <div class="main-content-block-item">
             <LastReviews></LastReviews>
@@ -71,7 +72,7 @@
     display: block;
     opacity: 1;
     padding-left: 0;
-    transition: opacity .5s ease-in, padding-left .7s ease-in-out;
+    transition: opacity .5s ease-in, padding-left .2s ease-in-out;
   }
 
 
