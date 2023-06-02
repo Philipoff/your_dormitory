@@ -9,6 +9,7 @@
       <DormReviewCard class="dormReviews-cards__item"></DormReviewCard>
       <DormReviewCard class="dormReviews-cards__item"></DormReviewCard>
     </div>
+<!--    djdjdj {{ $props.reviews }}-->
   </div>
 </template>
 
@@ -16,7 +17,10 @@
 import DormReviewCard from "./DormReviewCard";
 export default {
   name: "DormReviews",
-  components: {DormReviewCard}
+  components: {DormReviewCard},
+  props: {
+    reviews: Array
+  }
 }
 </script>
 
