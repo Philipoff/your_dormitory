@@ -10,9 +10,10 @@
             <DormReviews></DormReviews>
           </div>
           <div class="main-content-block-item">
-            <LastReviews></LastReviews>
+            <LastReviews :reviews="reviews"></LastReviews>
           </div>
         </div>
+        <ReviewModal @addedReview="addNewReview()" :dormId="dormId"></ReviewModal>
       </div>
     </div>
   </div>
@@ -22,9 +23,10 @@
 import DormInfoCard from "../../components/DormInfoCard";
 import DormReviews from "../../components/DormReviews";
 import {useFetch, useRuntimeConfig} from "nuxt/app";
+import ReviewModal from "../../components/ReviewModal";
 export default {
   name: "index.vue",
-  components: {DormReviews, DormInfoCard},
+  components: {ReviewModal, DormReviews, DormInfoCard},
   computed: {
     dormId(){
       return this.$route.params.id
@@ -32,7 +34,8 @@ export default {
   },
   data(){
     return {
-      infoDorm: {}
+      infoDorm: {},
+      reviews: []
     }
   },
   methods: {
@@ -45,6 +48,7 @@ export default {
       switch(this.dormId){
         case '1':
           url = "https://run.mocky.io/v3/55401b2d-1c17-46ea-b075-60c1b828b09f"
+          //url ="https://run.mocky.io/v3/c568be24-0f34-404e-85d7-f95529ccc2c1"
           break;
         case '2':
           url = "https://run.mocky.io/v3/4ff3c9b1-b061-4fc7-8a9d-2215bded1c9e"
@@ -62,6 +66,7 @@ export default {
 
       const {data: gotInfoDorm} = await useFetch(url)
       this.infoDorm = gotInfoDorm
+      this.reviews = gotInfoDorm.reviews
       // return {
       //   id:"1",
       //   university:"СПбГЭТУ 'ЛЭТИ'",
@@ -71,8 +76,9 @@ export default {
       //   rate:"4.8",
       //   reviews: "[]"
       // }
-      // /api/reviews/1 - POST
-      //userId: 1
+    },
+    addNewReview(reviewObj){
+      this.reviews.push(reviewObj)
     }
   },
   created() {
