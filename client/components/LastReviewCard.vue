@@ -3,7 +3,7 @@
     <div class="card-header-inner">
       <div class="header__titles">
         <div class="card-university">СПбГЭТУ "ЛЭТИ"</div>
-        <div class="card-title">Общежитие №4</div>
+        <div class="card-title">Общежитие №2</div>
       </div>
       <div class="header__date">23.02.23</div>
     </div>
@@ -20,7 +20,7 @@
     <div class="review-text">
       <div>Если собираетесь провести студенческие годы здесь, то это хороший выбор! В общежитии сделан ремонт... Если собираетесь провести студенческие годы здесь, то это хороший выбор! В общежитии сделан ремонт...
       </div>
-      <button class="un">Читать далее..</button>
+      <NuxtLink to="/dorm_info/5" class="un">Читать далее..</NuxtLink>
 
     </div>
 
